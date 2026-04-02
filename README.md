@@ -9,7 +9,7 @@ This lab simulates a real-world enterprise network implementing:
 - Inter-VLAN routing using Router-on-a-Stick
 - Dynamic IP assignment via DHCP
 - OSPF routing between routers
-- Access Control Lists (ACLs) for traffic restriction
+- Access Control Lists for traffic restriction
 
 The goal was to design a secure, scalable, and segmented network architecture similar to production environments.
 
