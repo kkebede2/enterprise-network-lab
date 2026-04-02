@@ -1,0 +1,51 @@
+! =========================
+! Router2 Configuration
+! =========================
+
+hostname Router
+
+! -------------------------
+! Interface Configuration
+! -------------------------
+
+! Trunk interface toward switch
+interface GigabitEthernet0/0/0
+ no ip address
+ no shutdown
+
+! VLAN 10 (HR)
+interface GigabitEthernet0/0/0.10
+ encapsulation dot1Q 10
+ ip address 192.168.30.1 255.255.255.0
+
+! VLAN 20 (IT)
+interface GigabitEthernet0/0/0.20
+ encapsulation dot1Q 20
+ ip address 192.168.40.1 255.255.255.0
+
+! Router-to-router link (to R1)
+interface GigabitEthernet0/0/1
+ ip address 10.0.0.2 255.255.255.252
+ no shutdown
+
+! Unused interface
+interface GigabitEthernet0/0/2
+ shutdown
+
+! -------------------------
+! Routing (OSPF)
+! -------------------------
+router ospf 1
+ log-adjacency-changes
+ network 192.168.30.0 0.0.0.255 area 0
+ network 192.168.40.0 0.0.0.255 area 0
+ network 10.0.0.0 0.0.0.3 area 0
+
+! -------------------------
+! Misc Settings
+! -------------------------
+ip cef
+no ipv6 cef
+
+line vty 0 4
+ login
