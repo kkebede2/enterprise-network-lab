@@ -72,3 +72,9 @@ Designed and implemented a segmented enterprise network using VLANs, inter-VLAN 
 
 ### Successful Ping along with ACL blockage
 <img width="709" height="707" alt="successful-ping   ACL" src="https://github.com/user-attachments/assets/53072645-8396-43f2-ad51-a4b9089ddab5" />
+
+## 📁 Lab File
+
+Download and open the Packet Tracer file below to explore the network configuration:
+
+[Download Lab](./enterprise-network-lab.pkt)
