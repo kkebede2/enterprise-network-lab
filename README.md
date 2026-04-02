@@ -2,8 +2,16 @@
 Enterprise network lab implementing VLANs, inter-VLAN routing, DHCP, OSPF, and ACL-based traffic control using Cisco Packet Tracer.
 # Enterprise Network Lab (VLANs, OSPF, DHCP, ACL)
 
-## A brief overview
-Designed and implemented a segmented enterprise network using VLANs, inter-VLAN routing (router-on-a-stick), DHCP, OSPF, and ACLs to control traffic between network segments.
+## Project Overview
+This lab simulates a real-world enterprise network implementing:
+
+- VLAN segmentation (HR & IT departments)
+- Inter-VLAN routing using Router-on-a-Stick
+- Dynamic IP assignment via DHCP
+- OSPF routing between routers
+- Access Control Lists (ACLs) for traffic restriction
+
+The goal was to design a secure, scalable, and segmented network architecture similar to production environments.
 
 ---
 
@@ -60,6 +68,9 @@ Designed and implemented a segmented enterprise network using VLANs, inter-VLAN 
 
 ## 📸 Screenshots
 
+## 🖥️ Network Topology
+<img width="1613" height="778" alt="Network Topology" src="https://github.com/user-attachments/assets/b9ed1785-1039-4fb7-b40c-939da26cc3af" />
+
 ### VLAN Configuration
 <img width="726" height="715" alt="vlan-config sw1" src="https://github.com/user-attachments/assets/20d2b639-aee4-4cb9-af50-8fe841a4669c" />
 <img width="704" height="699" alt="vlan-config sw2" src="https://github.com/user-attachments/assets/5c48e61b-9b9d-4344-b991-b1b8292c1852" />
@@ -78,3 +89,12 @@ Designed and implemented a segmented enterprise network using VLANs, inter-VLAN 
 Download and open the Packet Tracer file below to explore the network configuration:
 
 [Download Lab](./enterprise-network-lab.pkt)
+
+## ▶️ How to Run
+
+1. Download the `.pkt` file
+2. Open in Cisco Packet Tracer
+3. Verify:
+   - PCs receive DHCP addresses
+   - Inter-VLAN routing works
+   - ACL blocks VLAN 10 → VLAN 20
