@@ -2,7 +2,7 @@
 ! Router2 Configuration
 ! =========================
 
-hostname Router
+hostname R2
 
 ! -------------------------
 ! Interface Configuration
