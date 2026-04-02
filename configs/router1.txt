@@ -1,0 +1,73 @@
+! =========================
+! Router1 Configuration
+! =========================
+
+hostname Router
+
+! -------------------------
+! DHCP Configuration
+! -------------------------
+ip dhcp excluded-address 192.168.10.1
+ip dhcp excluded-address 192.168.20.1
+
+ip dhcp pool VLAN10
+ network 192.168.10.0 255.255.255.0
+ default-router 192.168.10.1
+
+ip dhcp pool VLAN20
+ network 192.168.20.0 255.255.255.0
+ default-router 192.168.20.1
+
+! -------------------------
+! Interface Configuration
+! -------------------------
+
+! Physical trunk interface
+interface GigabitEthernet0/0/0
+ no ip address
+ no shutdown
+
+! VLAN 10 (HR)
+interface GigabitEthernet0/0/0.10
+ encapsulation dot1Q 10
+ ip address 192.168.10.1 255.255.255.0
+ ip access-group 100 in
+
+! VLAN 20 (IT)
+interface GigabitEthernet0/0/0.20
+ encapsulation dot1Q 20
+ ip address 192.168.20.1 255.255.255.0
+
+! Router-to-router link
+interface GigabitEthernet0/0/1
+ ip address 10.0.0.1 255.255.255.252
+ no shutdown
+
+! Unused interface
+interface GigabitEthernet0/0/2
+ shutdown
+
+! -------------------------
+! Routing (OSPF)
+! -------------------------
+router ospf 1
+ log-adjacency-changes
+ network 192.168.10.0 0.0.0.255 area 0
+ network 192.168.20.0 0.0.0.255 area 0
+ network 10.0.0.0 0.0.0.3 area 0
+
+! -------------------------
+! Access Control List (ACL)
+! -------------------------
+! Block VLAN10 → VLAN20 traffic
+access-list 100 deny ip 192.168.10.0 0.0.0.255 192.168.20.0 0.0.0.255
+access-list 100 permit ip any any
+
+! -------------------------
+! Misc Settings
+! -------------------------
+ip cef
+no ipv6 cef
+
+line vty 0 4
+ login
