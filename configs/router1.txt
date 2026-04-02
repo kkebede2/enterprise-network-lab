@@ -2,7 +2,7 @@
 ! Router1 Configuration
 ! =========================
 
-hostname Router
+hostname R1
 
 ! -------------------------
 ! DHCP Configuration
