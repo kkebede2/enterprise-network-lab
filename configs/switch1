@@ -1,0 +1,55 @@
+! =========================
+! Switch1 Configuration
+! =========================
+
+hostname SW1
+
+! -------------------------
+! VLAN Configuration
+! -------------------------
+vlan 10
+ name HR
+
+vlan 20
+ name IT
+
+! -------------------------
+! Access Ports
+! -------------------------
+
+! PC in VLAN 10 (HR)
+interface FastEthernet0/1
+ switchport mode access
+ switchport access vlan 10
+ spanning-tree portfast
+
+! PC in VLAN 20 (IT)
+interface FastEthernet0/2
+ switchport mode access
+ switchport access vlan 20
+ spanning-tree portfast
+
+! -------------------------
+! Trunk Port (to Router)
+! -------------------------
+interface FastEthernet0/24
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20
+
+! -------------------------
+! Spanning Tree
+! -------------------------
+spanning-tree mode pvst
+
+! -------------------------
+! Management Interface (unused)
+! -------------------------
+interface Vlan1
+ no ip address
+ shutdown
+
+! -------------------------
+! Line Configuration
+! -------------------------
+line vty 0 4
+ login
